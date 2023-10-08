@@ -56,7 +56,7 @@ class LinkedList {
 
         Node current = head;
         Node antecessor = null;
-        Node sucessor = null;
+        Node sucessor;
 
         while (current != null && current.data != numero) {
             antecessor = current;
