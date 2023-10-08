@@ -1,4 +1,4 @@
-package Lista01.Ex03;
+package Lista02.Ex03;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
