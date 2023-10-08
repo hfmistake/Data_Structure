@@ -14,18 +14,8 @@ class Aluno {
 
 class Vetor {
 
-    Aluno[] alunos = new Aluno[100];
+    Aluno[] alunos = new Aluno[2];
     int qtdAlunosVetor = 0;
-
-    //Inserção em vetor descompactado
-    public void inserirFinalVetorV1(Aluno a) {
-        for (int i = 0; i < alunos.length; i++) {
-            if (alunos[i] == null) {
-                alunos[i] = a;
-                break;
-            }
-        }
-    }
 
     public void imprimir() {
         for (int i = 0; i < alunos.length; i++) {
@@ -35,16 +25,7 @@ class Vetor {
         }
     }
 
-    //Inserção em vetor compactado e posição igual a null
-    public void inserirFinalVetorV2(Aluno a) {
-        for (int i = 0; i < alunos.length; i++) {
-            if (alunos[i] == null) {
-                alunos[i] = a;
-                break;
-            }
-        }
-    }
-    public void inserirFinalVetorV3(Aluno a) {
+    public void inserirFinalVetor(Aluno a) {
         if (qtdAlunosVetor < 100) {
             alunos[qtdAlunosVetor] = a;
             qtdAlunosVetor++;
@@ -67,13 +48,44 @@ class Vetor {
     }
 
     public String buscarAlunoPorPosicao(int pos) {
-        if (pos >= 0 && pos < (qtdAlunosVetor - 1)) {
+        if (pos >= 0 && pos < qtdAlunosVetor) {
             return "Nome: " + alunos[pos].nome;
         } else {
             return "Posição inválida!";
         }
     }
 
+    public void inserirAlunoPorPosicao(int pos, Aluno a) {
+        if (pos == qtdAlunosVetor) {
+            alunos[pos] = a;
+            qtdAlunosVetor++;
+            return;
+        }
+        if (pos >= 0 && pos < qtdAlunosVetor) {
+            for (int i = qtdAlunosVetor; i > pos; i--) {
+                alunos[i] = alunos[i - 1];
+            }
+            alunos[pos] = a;
+            qtdAlunosVetor++;
+        } else {
+            System.out.println("Posição inválida!");
+        }
+    }
+
+    public void removerAlunoPorPosicao(int pos) {
+        if (pos >= 0 && pos < qtdAlunosVetor) {
+            if (pos == qtdAlunosVetor - 1) {
+                alunos[pos] = null;
+            } else {
+                for (int i = pos; i < qtdAlunosVetor - 1; i++) {
+                    alunos[i] = alunos[i + 1];
+                }
+            }
+            qtdAlunosVetor--;
+        } else {
+            System.out.println("Posição inválida!");
+        }
+    }
 }
 
 public class Main {
@@ -84,8 +96,8 @@ public class Main {
         Aluno a1 = new Aluno("Davi");
         Aluno a2 = new Aluno("Daniel");
 
-        v.inserirFinalVetorV3(a1);
-        v.inserirFinalVetorV3(a2);
+        v.inserirFinalVetor(a1);
+        v.inserirFinalVetor(a2);
         v.imprimir();
 
         if (v.verificarAlunoLista("Ricardo")) {
@@ -94,7 +106,13 @@ public class Main {
             System.out.println("Aluno não existe no vetor!");
         }
 
-        System.out.println(v.buscarAlunoPorPosicao(0));
+        System.out.println(v.buscarAlunoPorPosicao(1));
+        v.removerAlunoPorPosicao(1);
+        v.imprimir();
+        v.tamanhoLista();
+        v.inserirAlunoPorPosicao(1, new Aluno("Ricardo"));
+        v.imprimir();
+        v.tamanhoLista();
 
     }
 }
