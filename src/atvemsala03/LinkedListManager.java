@@ -1,7 +1,7 @@
 package atvemsala03;
 
 class Node {
-    private int value;
+    private final int value;
     private Node next;
 
     public Node(int value) {
