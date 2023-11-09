@@ -1,4 +1,4 @@
-package Lista01;
+package lista01;
 
 
 class Aluno {

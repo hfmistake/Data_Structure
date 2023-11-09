@@ -1,4 +1,4 @@
-package AtvEmSala01;
+package atvemsala01;
 
 import java.util.Scanner;
 

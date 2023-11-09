@@ -1,4 +1,4 @@
-package AtvEmSala02;
+package atvemsala02;
 
 
 import java.util.ArrayList;
