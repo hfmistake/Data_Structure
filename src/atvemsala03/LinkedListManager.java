@@ -76,6 +76,12 @@ public class LinkedListManager {
             System.out.println("Posição inválida.");
             return;
         }
+        if (this.size == 1) {
+            head = null;
+            tail = null;
+            this.size--;
+            return;
+        }
         if (position == 0) {
             head = head.getNext();
 
@@ -94,10 +100,8 @@ public class LinkedListManager {
     public static void main(String[] args) {
         LinkedListManager list = new LinkedListManager();
         list.addByPosition(1,0);
-        list.addByPosition(10,1);
-        list.addByPosition(11,0);
-        list.addByPosition(12,2);
-        list.removeByPosition(1);
+        list.removeByPosition(0);
         list.printList();
+        System.out.println(list.tail.getValue());
     }
 }
